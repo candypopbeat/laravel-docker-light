@@ -28,9 +28,8 @@
    - 上記で調べたwebコンテナ名を使う
       ```bash
       # ボリューム用（同期をとらない永続化）のディレクトリをコピーする
-      docker cp vendor {コンテナ名}:/var/www/html 
-      docker cp node_modules {コンテナ名}:/var/www/html 
-      docker cp bootstrap {コンテナ名}:/var/www/html 
+      docker cp vendor {コンテナ名}:/var/www/html
+      docker cp bootstrap {コンテナ名}:/var/www/html
       docker cp storage {コンテナ名}:/var/www/html
 
       # パーミッションを変更する
