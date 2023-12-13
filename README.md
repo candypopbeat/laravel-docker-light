@@ -43,16 +43,25 @@
    ```bash
    # .env
    DB_CONNECTION=mysql
-   DB_HOST=127.0.0.1
+   DB_HOST=db
    DB_PORT=3306
    DB_DATABASE=laravel
    DB_USERNAME=user
    DB_PASSWORD=password-user
 
    # docker-compose.yml
-   MYSQL_DATABASE: laravel
-   MYSQL_USER: user
-   MYSQL_PASSWORD: password-user
+   db:
+      build: ./docker/db
+      ports:
+         - "3307:3306"
+      environment:
+         MYSQL_ROOT_PASSWORD: password-root
+         MYSQL_DATABASE: laravel
+         MYSQL_USER: user
+         MYSQL_PASSWORD: password-user
+         TZ: 'Asia/Tokyo'
+      volumes:
+         - db-data:/var/lib/mysql
    ```
 <br><br>
 
