@@ -11,20 +11,22 @@
    ```bash
    git clone https://github.com/candypopbeat/syokunohiroba-docker.git
    ```
-1. htmlフォルダの中にLaravelプロジェクトをインストールする
-   ```bash
-   composer create-project laravel/laravel ./html
-   ```
-1. Dockerデスクトップを起動させる
-2. docker-compose.ymlからコンテナを構築する
+1. htmlフォルダの中にLaravelプロジェクトを入れ込む
+   1. 新規インストールする場合
+      ```bash
+      composer create-project laravel/laravel ./html
+      ```
+   1. 既存プロジェクトの場合はコピーする
+2. Dockerデスクトップを起動させる
+3. docker-compose.ymlからコンテナを構築する
    ```bash
    docker compose up
    ```
-1. webコンテナ名を調べる
+4. webコンテナ名を調べる
    ```bash
    docker ps
    ```
-1. webコンテナの調整をする
+5. webコンテナの調整をする
    - 上記で調べたwebコンテナ名を使う
       ```bash
       # ボリューム用（同期をとらない永続化）のディレクトリをコピーする
