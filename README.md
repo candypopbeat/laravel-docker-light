@@ -39,6 +39,21 @@
       docker exec {コンテナ名} chmod -R 777 bootstrap
       docker exec {コンテナ名} chmod -R 777 storage
       ```
+6. .env と docker-compose.yml のデータベース情報を合わせる
+   ```bash
+   # .env
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=laravel
+   DB_USERNAME=user
+   DB_PASSWORD=password-user
+
+   # docker-compose.yml
+   MYSQL_DATABASE: laravel
+   MYSQL_USER: user
+   MYSQL_PASSWORD: password-user
+   ```
 <br><br>
 
 ## Docker コマンド
