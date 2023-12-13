@@ -11,7 +11,7 @@
    ```bash
    git clone https://github.com/candypopbeat/laravel-docker-light.git
    ```
-1. htmlフォルダの中にLaravelプロジェクトを入れ込む
+1. htmlフォルダの中にLaravelプロジェクトを入れ込む（.gitkeepは削除する）
    1. 新規インストールする場合
       ```bash
       composer create-project laravel/laravel ./html
