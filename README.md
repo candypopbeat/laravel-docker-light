@@ -9,7 +9,7 @@
 ## インストール方法
 1. リポジトリをクローンする
    ```bash
-   git clone https://github.com/candypopbeat/syokunohiroba-docker.git
+   git clone https://github.com/candypopbeat/laravel-docker-light.git
    ```
 1. htmlフォルダの中にLaravelプロジェクトを入れ込む
    1. 新規インストールする場合
