@@ -63,6 +63,17 @@
       volumes:
          - db-data:/var/lib/mysql
    ```
+1. マイグレートしてデータベースを構築する
+   ```bash
+   # webコンテナに入る
+   docker exec -it {コンテナ名} bash
+
+   # マイグレートする
+   php artisan migrate
+   ```
+1. データベースにデータを入れ込む
+   1. SQLファイルをインポートする
+   2. シーダーを作って実行する
 <br><br>
 
 ## Docker コマンド
