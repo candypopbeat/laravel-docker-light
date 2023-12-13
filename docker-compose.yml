@@ -2,17 +2,17 @@ version: '3.8'
 
 services:
 
-  # PHP込のwebサーバー
+  # Apache & PHP & Node.js
   web:
     build: ./docker/web
     ports:
       - 8080:80
     volumes:
       - ./html:/var/www/html
-      - bootstrap-data:/var/www/html/bootstrap
-      - storage-data:/var/www/html/storage
-      - node_modules-data:/var/www/html/node_modules
-      - vendor-data:/var/www/html/vendor
+      # - bootstrap-data:/var/www/html/bootstrap
+      # - storage-data:/var/www/html/storage
+      # - node_modules-data:/var/www/html/node_modules
+      # - vendor-data:/var/www/html/vendor
     depends_on:
       - db
     environment:
