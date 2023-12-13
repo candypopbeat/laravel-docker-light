@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+
+  # PHP込のwebサーバー
+  web:
+    build: ./docker/web
+    ports:
+      - 8080:80
+    volumes:
+      - ./html:/var/www/html
+      - bootstrap-data:/var/www/html/bootstrap
+      - storage-data:/var/www/html/storage
+      - node_modules-data:/var/www/html/node_modules
+      - vendor-data:/var/www/html/vendor
+    depends_on:
+      - db
+    environment:
+      TZ: Asia/Tokyo
+
+  # データベース
+  db:
+    build: ./docker/db
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password-root
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password-user
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - db-data:/var/lib/mysql
+
+  # phpMyAdmin
+  phpmyadmin:
+    image: phpmyadmin:latest
+    depends_on:
+      - db
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOSTS=db
+      - PMA_USER=root
+      - PMA_PASSWORD=password-root
+      - TZ=Asia/Tokyo
+    ports:
+      - "8090:80"
+
+  # 開発用メールサーバー
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - "8025:8025"
+    volumes:
+      - mailhog-data:/tmp
+    environment:
+      MH_STORAGE: maildir
+      MH_MAILDIR_PATH: /tmp
+      TZ: Asia/Tokyo
+
+# 永続的データ
+volumes:
+  db-data:
+  mailhog-data:
+  bootstrap-data:
+  storage-data:
+  node_modules-data:
+  vendor-data:
