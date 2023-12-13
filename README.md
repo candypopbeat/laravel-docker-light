@@ -16,7 +16,7 @@
       ```bash
       composer create-project laravel/laravel ./html
       ```
-   1. 既存プロジェクトの場合はコピーする
+   1. 既存プロジェクトの場合はhtmlフォルダ内にコピーする
 2. Dockerデスクトップを起動させる
 3. docker-compose.ymlからコンテナを構築する
    ```bash
