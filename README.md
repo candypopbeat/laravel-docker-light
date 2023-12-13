@@ -28,18 +28,54 @@
    - 上記で調べたwebコンテナ名を使う
       ```bash
       # ボリューム用（同期をとらない永続化）のディレクトリをコピーする
-      docker cp vendor {コンテナ名}:/var/www/html
-      docker cp node_modules {コンテナ名}:/var/www/html
-      docker cp bootstrap {コンテナ名}:/var/www/html
-      docker cp storage {コンテナ名}:/var/www/html
+      docker cp ./html/vendor {コンテナ名}:/var/www/html
+      docker cp ./html/node_modules {コンテナ名}:/var/www/html
+      docker cp ./html/bootstrap {コンテナ名}:/var/www/html
+      docker cp ./html/storage {コンテナ名}:/var/www/html
 
       # パーミッションを変更する
       docker exec {コンテナ名} chmod -R 777 bootstrap
       docker exec {コンテナ名} chmod -R 777 storage
       ```
-2. webコンテナに入る
-   ```bash
-   # 上記で調べたwebコンテナ名を使う
+<br><br>
+
+## Docker コマンド
+- 起動中コンテナ情報
+   ```bash=
+   docker ps
+   ```
+- コンテナに入る
+   ```bash=
    docker exec -it {コンテナ名} bash
    ```
+- ホストからコンテナ内へコピー
+   ```bash=
+   docker cp {対象ファイルパス} {コンテナID}:{パス}
+   ```
+- コンテナを一括停止
+   ```bash=
+   docker stop $(docker ps -q)
+   ```
 <br><br>
+
+## Docker Compose コマンド
+- コンテナ起動
+   ```bash=
+   docker-compose up
+   ```
+- 再ビルドしながらのコンテナ起動
+   ```bash=
+   docker compose up --build
+   ```
+- コンテナ削除 コンポーズファイル指定なし
+   ```bash=
+   docker-compose down
+   ```
+- キャッシュを使わないでビルド
+   ```bash=
+   docker-compose build --no-cache
+   ```
+- コンテナとそれに関連したイメージとボリューム削除
+   ```bash=
+   docker-compose down --rmi all --volumes --remove-orphans
+   ```
