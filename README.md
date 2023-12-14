@@ -22,16 +22,23 @@
    ```bash
    docker compose up
    ```
-4. webコンテナ名を調べる
+1. Laravelプロジェクトのセットアップをする
+   1. 既存のLaravelプロジェクト（gitリポジトリ）を移植する場合は html フォルダにクローンする
+      ```bash
+      git clone {リポジトリURL} ./html
+      ```
+   2. 新規インストールの場合はcomposerを使ってインストールする
+      ```bash
+      composer create-project laravel/laravel ./html
+      ```
+2. webコンテナ名を調べる
    ```bash
    docker ps
    ```
-5. webコンテナの調整をする
+3. webコンテナの調整をする
    - 上記で調べたwebコンテナ名を使う
       ```bash
       # ボリューム用（同期をとらない永続化）のディレクトリをコピーする
-      docker cp ./html/vendor {コンテナ名}:/var/www/html
-      docker cp ./html/node_modules {コンテナ名}:/var/www/html
       docker cp ./html/bootstrap {コンテナ名}:/var/www/html
       docker cp ./html/storage {コンテナ名}:/var/www/html
 
@@ -39,7 +46,7 @@
       docker exec {コンテナ名} chmod -R 777 bootstrap
       docker exec {コンテナ名} chmod -R 777 storage
       ```
-6. .env と docker-compose.yml のデータベース情報を合わせる
+5. .env と docker-compose.yml のデータベース情報を合わせる
    ```bash
    # .env
    DB_CONNECTION=mysql
@@ -63,7 +70,7 @@
       volumes:
          - db-data:/var/lib/mysql
    ```
-1. マイグレートしてデータベースを構築する
+6. マイグレートしてデータベースを構築する
    ```bash
    # webコンテナに入る
    docker exec -it {コンテナ名} bash
@@ -71,7 +78,7 @@
    # マイグレートする
    php artisan migrate
    ```
-1. データベースにデータを入れ込む
+7. データベースにデータを入れ込む
    1. SQLファイルをインポートする
    2. シーダーを作って実行する
 <br><br>
