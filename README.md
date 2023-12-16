@@ -16,21 +16,12 @@
       ```bash
       composer create-project laravel/laravel ./html
       ```
-   1. 既存プロジェクトの場合はhtmlフォルダ内にコピーする
+   1. 既存プロジェクトの場合はhtmlフォルダ内にコピーしたり、gitクローンしたりする
 2. Dockerデスクトップを起動させる
 3. docker-compose.ymlからコンテナを構築する
    ```bash
    docker compose up
    ```
-1. Laravelプロジェクトのセットアップをする
-   1. 既存のLaravelプロジェクト（gitリポジトリ）を移植する場合は html フォルダにクローンする
-      ```bash
-      git clone {リポジトリURL} ./html
-      ```
-   2. 新規インストールの場合はcomposerを使ってインストールする
-      ```bash
-      composer create-project laravel/laravel ./html
-      ```
 2. webコンテナ名を調べる
    ```bash
    docker ps
@@ -78,7 +69,7 @@
    # マイグレートする
    php artisan migrate
    ```
-7. データベースにデータを入れ込む
+7. 既存プロジェクトの場合はデータベースにデータを入れ込む
    1. SQLファイルをインポートする
    2. シーダーを作って実行する
 <br><br>
