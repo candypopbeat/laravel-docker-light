@@ -32,6 +32,7 @@
       # ボリューム用（同期をとらない永続化）のディレクトリをコピーする
       docker cp ./html/bootstrap {コンテナ名}:/var/www/html
       docker cp ./html/storage {コンテナ名}:/var/www/html
+      docker cp ./html/.git {コンテナ名}:/var/www/html
 
       # パーミッションを変更する
       docker exec {コンテナ名} chmod -R 777 bootstrap
