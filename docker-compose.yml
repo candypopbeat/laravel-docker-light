@@ -67,3 +67,4 @@ volumes:
   storage-data:
   node_modules-data:
   vendor-data:
+  git-data:
