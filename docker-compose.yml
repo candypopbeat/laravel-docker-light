@@ -13,6 +13,7 @@ services:
       - storage-data:/var/www/html/storage
       - node_modules-data:/var/www/html/node_modules
       - vendor-data:/var/www/html/vendor
+      - git-data:/var/www/html/.git
     depends_on:
       - db
     environment:
