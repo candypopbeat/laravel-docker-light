@@ -4,6 +4,8 @@ FROM php:8.2-apache
 # config
 COPY ./apache2.conf /etc/apache2/
 COPY ./php.ini /usr/local/etc/php/
+RUN echo 'alias ll="ls -la"' >> ~/.bashrc
+RUN echo ':set encoding=utf-8' >> ~/.vimrc
 
 # modrewrite
 RUN mv /etc/apache2/mods-available/rewrite.load /etc/apache2/mods-enabled
