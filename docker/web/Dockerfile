@@ -1,6 +1,9 @@
 # image
 FROM php:8.2-apache
 
+# php
+RUN docker-php-ext-install exif
+
 # config
 COPY ./apache2.conf /etc/apache2/
 COPY ./php.ini /usr/local/etc/php/
